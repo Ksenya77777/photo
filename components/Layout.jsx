@@ -13,6 +13,23 @@ module.exports = function Layout({ children }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         />
+         <link
+          rel="stylesheet"
+          href="/css/bootstrap.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="/css/index.css"
+        />
+        <script
+          defer
+          src="/js/bootstrap.bundle.min.js"
+        ></script>
+        <script
+          defer
+          src="/js/application.js"
+        ></script>
+
         <title>PhotoAlbom</title>
       </head>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
