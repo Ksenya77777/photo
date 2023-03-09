@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const React = require('react');
 
 module.exports = function Layout({ children }) {
@@ -13,7 +14,7 @@ module.exports = function Layout({ children }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         />
-         <link
+        <link
           rel="stylesheet"
           href="/css/bootstrap.min.css"
         />
@@ -76,9 +77,9 @@ module.exports = function Layout({ children }) {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  href="#"
+                  href="/myalboms"
                 >
-                  Мой альбом
+                  Мои альбомы
                 </a>
               </li>
               <li className="nav-item">

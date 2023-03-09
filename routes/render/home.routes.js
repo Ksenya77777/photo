@@ -1,17 +1,27 @@
 const router = require('express').Router();
+
 const Home = require('../../components/Home');
 // const { Photo } = require('../../db/models');
 
-
-
 router.route('/').get(async (req, res) => {
   try {
-    // const arr = await Photo.findAll({ raw: true });
-    // const { user } = res.locals;
-    res.renderComponent(Home);
-  
+    const arrPhoto = await fetch(
+      'https://api.unsplash.com/photos?per_page=22',
+      {
+        method: 'get',
+        headers: {
+          'Content-Type': 'Application/json',
+          Authorization:
+            'Client-ID iCxPxPog-dtW4SVjU4Qi1DtYOAE4l8JzU-61m2DmjKE',
+        },
+      }
+    );
+
+    const result = await arrPhoto.json();
+
+    res.renderComponent(Home, { result });
   } catch (error) {
-    res.status(500).json({ err: error });
+    res.status(500).json({ error });
   }
 });
 
