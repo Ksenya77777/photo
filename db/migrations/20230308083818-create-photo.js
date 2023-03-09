@@ -12,10 +12,10 @@ module.exports = {
       name: {
         type: Sequelize.TEXT,
       },
-      userId: {
+      albumId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
+          model: 'Albums',
           key: 'id',
         },
         onDelete: 'Cascade',
@@ -36,7 +36,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('Photos');
   },
 };
