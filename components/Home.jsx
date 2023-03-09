@@ -1,9 +1,10 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Home({ result }) {
+module.exports = function Home({ result, user }) {
+
   return (
-    <Layout result={result}>
+    <Layout result={result} user={user}>
       {result.map((el) => (
         <div
           className="container1"

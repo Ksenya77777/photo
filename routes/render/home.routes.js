@@ -3,6 +3,9 @@ const router = require('express').Router();
 const Home = require('../../components/Home');
 // const { Photo } = require('../../db/models');
 
+
+
+
 router.route('/').get(async (req, res) => {
   try {
     const arrPhoto = await fetch(
@@ -18,8 +21,8 @@ router.route('/').get(async (req, res) => {
     );
 
     const result = await arrPhoto.json();
-
-    res.renderComponent(Home, { result });
+    
+    res.renderComponent(Home, { result});
   } catch (error) {
     res.status(500).json({ error });
   }

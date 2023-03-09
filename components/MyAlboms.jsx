@@ -6,11 +6,14 @@ module.exports = function MyAlboms() {
   return (
     <Layout>
       <Albom />
-      <form>
-       
-        <div className="container"
-        style={{ width: '20rem' }}>
-           <h3>Добавить альбом</h3>
+      <form className="addAlbomForm"
+      action='/myalboms'
+      method='post'>
+        <div
+          className="container"
+          style={{ width: '20rem' }}
+        >
+          <h3>Добавить альбом</h3>
           <div className="mb-3">
             <label
               htmlFor="exampleInputEmail1"
@@ -19,6 +22,7 @@ module.exports = function MyAlboms() {
               Название
             </label>
             <input
+              name="name"
               type="text"
               className="form-control"
               id="exampleInputEmail1"
@@ -33,6 +37,7 @@ module.exports = function MyAlboms() {
               Описание
             </label>
             <input
+              name="description"
               type="text"
               className="form-control"
               id="exampleInputPassword1"
@@ -40,6 +45,7 @@ module.exports = function MyAlboms() {
           </div>
           <div className="mb-3 form-check">
             <input
+              name="visible"
               type="checkbox"
               className="form-check-input"
               id="exampleCheck1"
@@ -57,8 +63,6 @@ module.exports = function MyAlboms() {
           >
             Создать
           </button>
-        
-        
         </div>
       </form>
     </Layout>

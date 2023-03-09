@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const React = require('react');
 
-module.exports = function Layout({ children }) {
+module.exports = function Layout({ children, user }) {
   return (
     <html lang="en">
       <head>
@@ -25,11 +25,15 @@ module.exports = function Layout({ children }) {
         <script
           defer
           src="/js/bootstrap.bundle.min.js"
-        ></script>
+        />
         <script
           defer
           src="/js/application.js"
-        ></script>
+        />
+        <script
+          defer
+          src="/js/authScript.js"
+        />
 
         <title>PhotoAlbom</title>
       </head>
@@ -41,6 +45,7 @@ module.exports = function Layout({ children }) {
           >
             Photo-Albom
           </a>
+          {user?.login ? <p>{user.login}</p>:<p></p>}
           <button
             className="navbar-toggler"
             type="button"
@@ -50,7 +55,7 @@ module.exports = function Layout({ children }) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon" />
           </button>
           <div
             className="collapse navbar-collapse"
@@ -61,38 +66,53 @@ module.exports = function Layout({ children }) {
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="#"
+                  href="/"
                 >
                   Home
                 </a>
               </li>
-              <li className="nav-item">
-                <a
+              {user?.login ? (
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/myalboms"
+                  >
+                    Мои альбомы
+                  </a>
+                  <a
+                    className="nav-link"
+                    href="/auth/logout"
+                  >
+                    Выход
+                  </a>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="/auth/login"
+                  >
+                    Войти
+                  </a>
+                  <a
+                    className="nav-link"
+                    href="/auth/registration"
+                  >
+                    Регистрация
+                  </a>
+                </li>
+              )}
+
+              {/* <li className="nav-item"></li>
+              <li className="nav-item"></li>
+              <li className="nav-item"> */}
+              {/* <a
                   className="nav-link"
-                  href="#"
+                  href="/auth/logout"
                 >
-                  Войти
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="/myalboms"
-                >
-                  Мои альбомы
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="/auth/registration"
-                >
-                  Регистрация
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled">Выход</a>
-              </li>
+                  Выход
+                </a> */}
+              {/* </li> */}
             </ul>
           </div>
         </div>
