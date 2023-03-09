@@ -1,16 +1,21 @@
 const React = require('react');
+const Layout = require('./Layout');
 
 module.exports = function Registration({ title }) {
   return (
     <Layout>
       <div>
-        <form action="" method="POST" id="formReg">
+        <form action="/auth/registration" method="POST" id="formReg">
           <div className="form1">
-            <label>Имя:<input name="login" type="text" placeholder="Введите Ваше имя" id="name" />
+            <label>
+            Логин:
+              <input name="login" type="text" placeholder="Введите Ваше имя" id="name" />
             </label>
           </div>
           <div className='="form1'>
-            <label>E-mail:<input
+            <label>
+              E-mail:
+              <input
                 name="email"
                 type="email"
                 placeholder="Введите адрес электронной почты"
@@ -19,11 +24,15 @@ module.exports = function Registration({ title }) {
             </label>
           </div>
           <div className='="form1'>
-            <label>Пароль:<input name="password1" type="password" placeholder="Введите пароль" id="password1" />
+            <label>
+              Пароль:
+              <input name="password1" type="password" placeholder="Введите пароль" id="password1" />
             </label>
           </div>
           <div className='="form1'>
-            <label>Повторите пароль:<input
+            <label>
+              Повторите пароль:
+              <input
                 name="password2"
                 type="password"
                 placeholder="Введите пароль еще раз"

@@ -4,6 +4,7 @@ const Home = require('../../components/Home');
 
 
 
+
 router.route('/').get(async (req, res) => {
   try {
     // const arr = await Photo.findAll({ raw: true });
