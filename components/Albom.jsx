@@ -5,7 +5,7 @@ module.exports = function Albom({ albom }) {
     <div
       data-id={albom.id}
       className="card albomCard"
-      style={{ width: '20rem' }}
+
     >
       <img
         src="https://texterra.ru/upload/iblock/132/anons.jpg"
@@ -16,8 +16,10 @@ module.exports = function Albom({ albom }) {
         <h5 className="card-title">{albom.name}</h5>
         <p className="card-text">{albom.description}</p>
         <a
-          href={`/myalboms/fotolist/${albom.id}`}
-          className="btn btn-primary"
+ 
+          href="/myalboms/fotolist"
+          className="btn"
+
         >
           Открыть
         </a>
@@ -25,14 +27,14 @@ module.exports = function Albom({ albom }) {
           type="button"
           data-id={albom.id}
           href={`/edit/albums/${albom.id}`}
-          className="btn btn-info"
+          className="btn"
         >
           Изменить
         </a>
         <button
           type="button"
           data-id={albom.id}
-          className="btn btn-danger btnDelete"
+          className="btn btn-del"
         >
           Удалить
         </button>
