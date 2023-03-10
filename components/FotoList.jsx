@@ -1,13 +1,21 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 const React = require('react');
 const Layout = require('./Layout');
+const Foto = require('./Foto');
 
-module.exports = function FotoList({user}) {
+module.exports = function FotoList({ user, arrFoto, albumId }) {
   return (
     <Layout user={user}>
+      <div className="fotoContainer">
+        {arrFoto.length ? (
+          arrFoto.map((foto) => <Foto foto={foto} />)
+        ) : (
+          <p>нет фоточек</p>
+        )}
+      </div>
       <form
-        className="addAlbomForm"
-        action="/myalboms/fotoList"
+        className="addFotoForm"
+        action={`/myalboms/fotolist/${albumId}`}
         method="post"
       >
         <div
