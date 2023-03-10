@@ -1,0 +1,88 @@
+div#background {
+  height: 700px;
+  width: 100%;
+  background-image: url(http://garchitecture.ca/php/images/headers/wood.jpg);
+  padding-top: 20px;
+}
+
+div#gallery {
+  width: 800px;
+  margin: auto;
+}
+
+#background img {
+  height: 150px;
+  margin: 0px;
+}
+
+#background figure {
+  float: left;
+  position: relative;
+  background-color: white;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 1px 2px 3px black;
+}
+
+figure.pic:nth-child(1) {
+  -webkit-transform: rotate(-10deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(2+1){
+  -webkit-transform: rotate(15deg);
+  z-index: 2;
+}
+
+figure.pic:nth-child(3) {
+  -webkit-transform: rotate(-25deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(4) {
+  -webkit-transform: rotate(5deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(5) {
+  -webkit-transform: rotate(5deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(6) {
+  -webkit-transform: rotate(-8deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(7) {
+  -webkit-transform: rotate(2deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(8) {
+  -webkit-transform: rotate(-13deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(9) {
+  -webkit-transform: rotate(-7deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(10) {
+  -webkit-transform: rotate(2deg);
+  z-index: 1;
+}
+
+figure.pic:nth-child(11) {
+  -webkit-transform: rotate(-3deg);
+  z-index: 1;
+}
+
+#background figure:hover {
+  box-shadow: 5px 10px 100px black;
+  -webkit-transform: scale(1.1, 1.1);
+  z-index: 20;
+}
