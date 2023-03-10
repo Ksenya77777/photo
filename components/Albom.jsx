@@ -1,7 +1,6 @@
 const React = require('react');
 
 module.exports = function Albom({ albom }) {
-
   return (
     <div
       data-id={albom.id}
@@ -17,7 +16,7 @@ module.exports = function Albom({ albom }) {
         <h5 className="card-title">{albom.name}</h5>
         <p className="card-text">{albom.description}</p>
         <a
-          href="#"
+          href="/myalboms/fotolist"
           className="btn btn-primary"
         >
           Открыть
@@ -25,7 +24,7 @@ module.exports = function Albom({ albom }) {
         <a
           type="button"
           data-id={albom.id}
-          href="/edit/albums"
+          href={`/edit/albums/${albom.id}`}
           className="btn btn-info"
         >
           Изменить
@@ -33,7 +32,6 @@ module.exports = function Albom({ albom }) {
         <button
           type="button"
           data-id={albom.id}
-          
           className="btn btn-danger btnDelete"
         >
           Удалить

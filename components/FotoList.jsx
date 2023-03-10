@@ -1,44 +1,29 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 const React = require('react');
 const Layout = require('./Layout');
-const Albom = require('./Albom');
 
-module.exports = function MyAlboms({ arr, user }) {
+module.exports = function FotoList({user}) {
   return (
     <Layout user={user}>
-      <div
-        className="albumList"
-        id="divAlbum"
-      >
-        {arr.length ? (
-          arr.map((albom) => (
-            <Albom
-              key={albom.id}
-              albom={albom}
-            />
-          ))
-        ) : (
-          <div>Нет альбомов</div>
-        )}
-      </div>
       <form
         className="addAlbomForm"
-        action="/myalboms"
+        action="/myalboms/fotoList"
         method="post"
       >
         <div
           className="container"
           style={{ width: '20rem' }}
         >
-          <h3>Добавить альбом</h3>
+          <h3>Добавить фото</h3>
           <div className="mb-3">
             <label
               htmlFor="exampleInputEmail1"
               className="form-label"
             >
-              Название
+              Name
             </label>
             <input
-              name="name"
+              name="nameFoto"
               type="text"
               className="form-control"
               id="exampleInputEmail1"
@@ -53,31 +38,30 @@ module.exports = function MyAlboms({ arr, user }) {
               Описание
             </label>
             <input
-              name="description"
+              name="descriptionFoto"
               type="text"
               className="form-control"
               id="exampleInputPassword1"
             />
           </div>
-          <div className="mb-3 form-check">
-            <input
-              name="visible"
-              type="checkbox"
-              className="form-check-input"
-              id="exampleCheck1"
-            />
-            <label
-              className="form-check-label"
-              htmlFor="exampleCheck1"
-            >
-              Закрытый альбом
-            </label>
-          </div>
+          <label
+            htmlFor="exampleInputPassword1"
+            className="form-label"
+          >
+            Url
+          </label>
+          <input
+            name="urlFoto"
+            type="text"
+            className="form-control"
+            id="exampleInputPassword1"
+          />
+          <div className="mb-3 form-check" />
           <button
             type="submit"
             className="btn btn-primary"
           >
-            Создать
+            Добавить
           </button>
         </div>
       </form>

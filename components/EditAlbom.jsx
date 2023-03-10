@@ -1,13 +1,15 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function EditAlbom() {
+module.exports = function EditAlbom({ user }) {
   return (
-    <Layout>
+    <Layout user={user}>
       <form
+        id="editAlbomid"
         className="editAlbomForm"
         action="/myalboms"
-        method="put"
+    
       >
         <div
           className="container"
@@ -57,9 +59,10 @@ module.exports = function EditAlbom() {
               Закрытый альбом
             </label>
           </div>
+          <div className='errorMessageEdit'></div>
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary editBtn"
           >
             Изменить
           </button>
