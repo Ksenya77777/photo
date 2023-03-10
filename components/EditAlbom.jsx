@@ -1,32 +1,19 @@
 const React = require('react');
 const Layout = require('./Layout');
-const Albom = require('./Albom');
 
-module.exports = function MyAlboms({ arr, user }) {
+module.exports = function EditAlbom() {
   return (
-    <Layout user={user}>
-      <div className=".albumList" id='divAlbum'>
-        {arr.length ? (
-          arr.map((albom) => (
-            <Albom
-              key={albom.id}
-              albom={albom}
-            />
-          ))
-        ) : (
-          <div>Нет альбомов</div>
-        )}
-      </div>
+    <Layout>
       <form
-        className="addAlbomForm"
+        className="editAlbomForm"
         action="/myalboms"
-        method="post"
+        method="put"
       >
         <div
           className="container"
           style={{ width: '20rem' }}
         >
-          <h3>Добавить альбом</h3>
+          <h3>Изменить альбом</h3>
           <div className="mb-3">
             <label
               htmlFor="exampleInputEmail1"
@@ -74,7 +61,7 @@ module.exports = function MyAlboms({ arr, user }) {
             type="submit"
             className="btn btn-primary"
           >
-            Создать
+            Изменить
           </button>
         </div>
       </form>

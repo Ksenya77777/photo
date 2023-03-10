@@ -2,26 +2,28 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Photo extends Model {
-    static associate({ Album }) {
-      this.belongsTo(Album, { foreignKey: 'albumId' });
+  class Album extends Model {
+    static associate({ User }) {
+      this.belongsTo(User, { foreignKey: 'userId' });
     }
   }
-  Photo.init(
+  Album.init(
     {
       name: {
         type: DataTypes.TEXT,
+        allowNull: false,
       },
-      albumId: {
+      userId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
-          model: 'Albums',
+          model: 'User',
           key: 'id',
         },
         onDelete: 'Cascade',
       },
-      url: {
-        type: DataTypes.TEXT,
+      visible: {
+        type: DataTypes.BOOLEAN,
       },
       description: {
         type: DataTypes.TEXT,
@@ -29,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Photo',
+      modelName: 'Album',
     }
   );
-  return Photo;
+  return Album;
 };

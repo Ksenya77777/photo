@@ -1,20 +1,57 @@
 const router = require('express').Router();
-const {Albom} = require('../../db/models')
+const { Album } = require('../../db/models');
 const MyAlboms = require('../../components/MyAlboms');
+const Albom = require('../../components/Albom');
 
-router.route('/').get(async (req, res) => {
+router
+  .route('/')
+  .get(async (req, res) => {
+    try {
+      const arr = await Album.findAll({ raw: true });
+      res.renderComponent(MyAlboms, { arr });
+    } catch (error) {
+      res.status(500).json({ error });
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const { name, visible, description } = req.body;
+      const albom = await Album.create({
+        name,
+        visible,
+        description,
+        userId: req.session.userId,
+      });
+      res.status(201).json({
+        html: res.renderComponent(MyAlboms, { albom }, { htmlOnly: true }),
+      });
+    } catch (error) {}
+  });
+
+//delete
+router.route('/myalbums/:id').delete(async (req, res) => {
   try {
-    res.renderComponent(MyAlboms);
-  } catch (error) {
-    res.status(500).json({ error });
+  
+    const album = await Album.findOne({ where: { id: req.params.id } });
+    if (album.userId === req.session.userId) {
+      const delAlbum = await Album.destroy({
+        where: { id: req.params.id },
+      });
+      res.status(200).json({ delAlbum });
+    }
+  } catch ({ message }) {
+    res.status(400).json(message);
   }
 })
-.post(async(req,res)=>{
+.put(async(req,res)=>{
   try {
-    const {name,visible, description}=req.body
-
+    const album = await Album.findOne({ where: { id: req.params.id } });
+    if (album.userId === req.session.userId){}
   } catch (error) {
     
   }
 })
+
+
+
 module.exports = router;

@@ -39,10 +39,7 @@ module.exports = function Layout({ children, user }) {
       </head>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a
-            className="navbar-brand"
-            href="#"
-          >
+          <a className="navbar-brand" href="#">
             Photo-Albom
           </a>
           {user?.login ? <p>{user.login}</p>:<p></p>}
@@ -57,10 +54,7 @@ module.exports = function Layout({ children, user }) {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div
-            className="collapse navbar-collapse"
-            id="navbarNav"
-          >
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <a
@@ -103,16 +97,7 @@ module.exports = function Layout({ children, user }) {
                 </li>
               )}
 
-              {/* <li className="nav-item"></li>
-              <li className="nav-item"></li>
-              <li className="nav-item"> */}
-              {/* <a
-                  className="nav-link"
-                  href="/auth/logout"
-                >
-                  Выход
-                </a> */}
-              {/* </li> */}
+    
             </ul>
           </div>
         </div>

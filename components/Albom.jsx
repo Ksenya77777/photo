@@ -1,10 +1,11 @@
 const React = require('react');
 
-module.exports = function Albom() {
+module.exports = function Albom({ albom }) {
+
   return (
     <div
-      className="card"
-     
+      data-id={albom.id}
+      className="card albomCard"
       style={{ width: '20rem' }}
     >
       <img
@@ -13,8 +14,8 @@ module.exports = function Albom() {
         alt="..."
       />
       <div className="card-body">
-        <h5 className="card-title">Мой первый альбом</h5>
-        <p className="card-text">Тут должно быть описание альбома</p>
+        <h5 className="card-title">{albom.name}</h5>
+        <p className="card-text">{albom.description}</p>
         <a
           href="#"
           className="btn btn-primary"
@@ -22,17 +23,21 @@ module.exports = function Albom() {
           Открыть
         </a>
         <a
-          href="#"
+          type="button"
+          data-id={albom.id}
+          href="/edit/albums"
           className="btn btn-info"
         >
           Изменить
         </a>
-        <a
-          href="#"
-          className="btn btn-danger"
+        <button
+          type="button"
+          data-id={albom.id}
+          
+          className="btn btn-danger btnDelete"
         >
           Удалить
-        </a>
+        </button>
       </div>
     </div>
   );
