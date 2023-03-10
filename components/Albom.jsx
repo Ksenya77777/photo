@@ -16,7 +16,7 @@ module.exports = function Albom({ albom }) {
         <h5 className="card-title">{albom.name}</h5>
         <p className="card-text">{albom.description}</p>
         <a
-          href="/myalboms/fotolist"
+          href={`/myalboms/fotolist/${albom.id}`}
           className="btn btn-primary"
         >
           Открыть
