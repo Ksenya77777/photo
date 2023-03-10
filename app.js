@@ -4,23 +4,24 @@ const express = require('express');
 const config = require('./config/serverConfig');
 
 const homeRouter = require('./routes/render/home.routes');
-const authRoute = require('./routes/render/auth.route')
-
+const myAlbomsRouter = require('./routes/render/myAlboms.routes');
+const authRoute = require('./routes/render/auth.route');
+const delAlbumRouter = require('./routes/render/myAlboms.routes');
+const updateRouter = require('./routes/render/editAlbum.routes');
 const app = express();
 
 const PORT = 3000;
 
 config(app);
-app.use(express.static('public'))
+app.use(express.static('public'));
 
+//render
 app.use('/', homeRouter);
-app.use('/auth', authRoute)
-
-
-
-
+app.use('/myalboms', myAlbomsRouter);
+app.use('/auth', authRoute);
+app.use('/delete', delAlbumRouter);
+app.use('/edit', updateRouter);
 
 app.listen(PORT, () => {
   console.log(`Сервер пашет на ${PORT} порту`);
 });
-
