@@ -1,6 +1,7 @@
 const addAlbomForm = document.querySelector('.addAlbomForm');
 const delBtn = document.querySelector('#divAlbum');
-const updBtn = document.querySelector('.editAlbomForm');
+const updBtn = document.querySelector('#editAlbomid');
+const addFoto = document.querySelector('.addAlbomForm')
 
 //addAlbom
 if (addAlbomForm) {
@@ -28,7 +29,6 @@ if (delBtn) {
   delBtn.addEventListener('click', async (event) => {
     if (event.target.classList.contains('btnDelete')) {
       const { id } = event.target.dataset;
-
       const res = await fetch(`/delete/myalbums/${id}`, {
         method: 'delete',
       });
@@ -44,23 +44,49 @@ if (delBtn) {
 
 //update
 
-if(updBtn){
-  updBtn.addEventListener('submit', async (event)=>{
+if (updBtn) {
+  updBtn.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const arrHref = window.location.href.split('/');
+console.log(arrHref[arrHref.length - 1])
+    const { name, visible, description } = event.target;
+    
 
-    event.preventDefault()
-    const { name, visible, description, method, action } = event.target;
-    const { id } = event.target.dataset;
-    console.log(id)
-    const res = await fetch(action, {
-      method,
+    const response = await fetch(`/edit/albums/${arrHref[arrHref.length - 1]}`, {
+      method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: name.value,
         visible: visible.checked,
         description: description.value,
       }),
-    })
-    const data = await response.json();
-  }
-  )
+    });
+    const responsejson = await response.json();
+    if(responsejson.album){
+      window.location.assign('/myalboms')
+    } else{
+      document.querySelector('.errorMessageEdit').innerText =
+      res.message;
+    }
+
+  });
+}
+
+
+if(addFoto){
+  addFoto.addEventListener('submit', (event)=>{
+    event.preventDefault()
+    const { nameFoto,  descriptionFoto, urlFoto, method, action } = event.target;
+    console.log(nameFoto,  descriptionFoto, urlFoto)
+const fotores = await fetch(action, {
+  method,
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    nameFoto: nameFoto.value,
+    descriptionFoto: descriptionFoto.value,
+    urlFoto: urlFoto.value,
+  }),
+})
+const data = await fotores.json()
+  })
 }

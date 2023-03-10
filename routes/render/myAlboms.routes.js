@@ -7,7 +7,10 @@ router
   .route('/')
   .get(async (req, res) => {
     try {
-      const arr = await Album.findAll({ raw: true });
+      const arr = await Album.findAll({
+        where: { userId: req.session.userId },
+        raw: true,
+      });
       res.renderComponent(MyAlboms, { arr });
     } catch (error) {
       res.status(500).json({ error });
@@ -23,7 +26,7 @@ router
         userId: req.session.userId,
       });
       res.status(201).json({
-        html: res.renderComponent(MyAlboms, { albom }, { htmlOnly: true }),
+        html: res.renderComponent(Albom, { albom }, { htmlOnly: true }),
       });
     } catch (error) {}
   });
@@ -31,7 +34,6 @@ router
 //delete
 router.route('/myalbums/:id').delete(async (req, res) => {
   try {
-  
     const album = await Album.findOne({ where: { id: req.params.id } });
     if (album.userId === req.session.userId) {
       const delAlbum = await Album.destroy({
@@ -42,16 +44,6 @@ router.route('/myalbums/:id').delete(async (req, res) => {
   } catch ({ message }) {
     res.status(400).json(message);
   }
-})
-.put(async(req,res)=>{
-  try {
-    const album = await Album.findOne({ where: { id: req.params.id } });
-    if (album.userId === req.session.userId){}
-  } catch (error) {
-    
-  }
-})
-
-
+});
 
 module.exports = router;
